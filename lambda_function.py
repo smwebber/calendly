@@ -6,6 +6,7 @@ import requests
 import datetime
 from io import StringIO
 import logging
+import datetime
 import botocore
 import botocore.session
 from aws_secretsmanager_caching import SecretCache, SecretCacheConfig
@@ -21,13 +22,13 @@ SECRET_NAME = os.getenv('CALENDLY_SECRET_NAME', 'calendly')
 REGION_NAME = os.getenv('AWS_REGION', 'us-east-1')
 
 # Initialize AWS Clients
-secrets_client = boto3.client('secretsmanager', region_name=REGION_NAME)
-s3_client = boto3.client('s3')
+secrets_client = boto3.client(service_name='secretsmanager', region_name=REGION_NAME)
+s3_client = boto3.client(service_name='s3', region_name=REGION_NAME)
 
-# Generate Timestamp for filenaming
+# Generate Timestamp for file naming
 timestamp = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-S3_CALENDLY_PATH = f's3://{S3_BUCKET_NAME}/{S3_FOLDER_PATH}scheduled_calls/{timestamp}.csv'
-S3_METRICS_PATH = f's3://{S3_BUCKET_NAME}/{S3_FOLDER_PATH}metrics/{timestamp}.csv'
+S3_CALENDLY_PATH = f'{S3_FOLDER_PATH}scheduled_calls/{timestamp}.csv'
+S3_METRICS_PATH = f'{S3_FOLDER_PATH}metrics/{timestamp}.csv'
 
 
 def get_calendly_secret():
@@ -88,6 +89,9 @@ def get_scheduled_events():
     for event_type in event_types:
         scheduled_events = get_from_calendly('scheduled_events', params={'event_type': event_type['uri'], 'organization': organization})
         for event in scheduled_events['collection']:
+            start_time = datetime.datetime.strptime(event['start_time'], '%Y-%m-%dT%H:%M:%S.%fZ')
+            if event.get(start_time, datetime.datetime(1970, 1, 1)) > datetime.datetime.now():
+                continue
             all_events.append({
                 'event_id': event.get('uri', ''),
                 'name': event.get('name', ''),
@@ -95,9 +99,8 @@ def get_scheduled_events():
                 'end_time': event.get('end_time', ''),
                 'event_type': event.get('event_type', ''),
                 'status': event.get('status', ''),
-                'invitees_counter': event.get('invitees_counter', ''),
-                'location': event.get('location', ''),
-                'organizer_email': event.get('location', {}).get('email', '')
+                'invitees': event.get('invitees_counter', '').get('total', ''),
+                'location': str(event.get('location', {}).get('join_url', '')).replace('None', '')
             })
 
     return pandas.DataFrame(all_events)
@@ -114,13 +117,13 @@ def calculate_metrics(df):
     df['end_time'] = pandas.to_datetime(df['end_time'])
     df['duration'] = (df['end_time'] - df['start_time']).dt.total_seconds() / 60
 
-    metrics = df.groupby('organizer_email').agg({
+    metrics = df.groupby('name').agg({
         'event_id': 'count',
-        'invitees_counter': 'sum',
+        'invitees': 'sum',
         'duration': 'mean'
     }).reset_index()
 
-    metrics.columns = ['organizer_email', 'scheduled_events', 'total_invitees', 'avg_duration']
+    metrics.columns = ['name', 'scheduled_events', 'total_invitees', 'avg_duration']
 
     return metrics
 
@@ -156,7 +159,7 @@ def lambda_handler(event, context):
 
         return {
             'statusCode': 200,
-            'body': json.dumps('Hello from Lambda!')
+            'body': json.dumps('S3 Bucket Successfully updated')
         }
     except Exception as e:
         logger.error(f'Error in lambda_handler: {e}')
