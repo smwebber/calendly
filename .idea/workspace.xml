@@ -5,28 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65101f8f-db9e-49fe-bdb1-9c49e289dba8" name="Changes" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/calendly.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendly_venv/bin/Activate.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendly_venv/bin/activate" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendly_venv/bin/activate.csh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendly_venv/bin/activate.fish" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendly_venv/bin/f2py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendly_venv/bin/jp.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendly_venv/bin/normalizer" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendly_venv/bin/numpy-config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendly_venv/bin/pip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendly_venv/bin/pip3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendly_venv/bin/pip3.12" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendly_venv/pyvenv.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda_function.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/calendly.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/calendly.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,21 +24,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "smwebber"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;smwebber&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/smwebber/calendly.git",
-    "accountId": "503c18a0-2d12-4539-981c-1526a2e71896"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/smwebber/calendly.git&quot;,
+    &quot;accountId&quot;: &quot;503c18a0-2d12-4539-981c-1526a2e71896&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="35hxXOaf8Eyh1fqiFPqd74hcAc7" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -74,7 +55,13 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/steph/OneDrive/Documents/code/Python/calendly"
+    "last_opened_file_path": "C:/Users/steph/code/calendly",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
@@ -91,6 +78,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lambda_function.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -120,8 +108,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1763576144404</updated>
+      <workItem from="1764261666183" duration="718000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
